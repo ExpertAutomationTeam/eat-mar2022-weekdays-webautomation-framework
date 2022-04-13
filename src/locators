@@ -1,0 +1,67 @@
+locators/selectors:
+
+id = search
+name = search_query
+className = ytd-searchbox
+tagName = input
+linkText = Best Sellers         .
+partialLinkText = Best Sellers
+css selector
+xpath
+
+<input id="search" autocapitalize="none" autocomplete="off" autocorrect="off" name="search_query" tabindex="0" type="text"
+spellcheck="false" placeholder="Search" aria-label="Search" role="combobox" aria-haspopup="false" aria-autocomplete="list"
+dir="ltr" class="ytd-searchbox" style="outline: none;">
+
+<tagName attribute="value" attribute="value" attribute="value" attribute="value" attribute="value">text</tagName>
+
+ancher tag = link
+<a href="/gp/bestsellers/?ref_=nav_cs_bestsellers" class="nav-a  " tabindex="0" data-csa-c-type="link" data-csa-c-slot-id="nav_cs_1"
+data-csa-c-content-id="nav_cs_bestsellers" data-csa-c-id="lak0kc-sldz6v-xbnpns-47lo2o">Best Sellers         .</a>
+
+notes (locators/selector):
+1- Avoid usage of alphanumeric value, it may change in every page refresh (dynamic)
+2- Double quotes not accepted
+3- LinkText: make sure the HTML code start with anchor tag ‘a’
+4- Difference between css and xpath - in css we can not traverse back which is possible in xpath by child-parent relationship
+5- Css selector is 10 times faster than xpath
+6- Copy the value from the HTLM code to void any missing spaces in your text
+
+regular expression = regex = syntax
+css selector:
+tagName[attribute='value'] --> input[id='search'] --> #search
+                           --> a[class='nav-a  '] --> .nav-a
+                                                  --> .nav-a nav-a-2 nav-truncate.nav-progressive-attribute
+tagName[attribute*='partialValue']
+
+notes (css selector):
+1- Leave blank or put * if you don’t want to put tagName
+2- #idValue or .classNameValue is also a possible customized css selector
+3- Replace spaces with a dot in case of multiple words class name
+
+xpath:
+//tagName[@attribute='value'] --> //input[@id='search']
+                              --> //a[@class='nav-a  ']
+//tagName[contains(@attribute,'partialValue')]
+//tagName[text()='value']
+//tagName[contains(text(),'partialValue')]
+
+notes (xpath):
+1- Replace tagName by * if you don’t want to put tagName
+2- Relative xpath does not depend on parent nodes (more reliable)
+3- Absolute xpath is a parent/child path
+4- Xpath starting by HTML are not reliable
+5- We can reach any HTML line by parent-child relationship
+6- Index can be used to choose the right element by using [index]
+
+Parent-Child relationship - to transverse from parent to child:
+//tagName[@Attribute=‘value’]/tagName/tagName
+//tagName[@Attribute=‘value’]//tagName[@Attribute=‘value’]
+
+Child-Parent relationship - to transverse from child to parent:
+//tagName[@Attribute=‘value’]/../../..
+//tagName[@Attribute=‘value’]/parent::tagName/parent::tagName
+
+Sibling relationship:
+//tagName[@Attribute=‘value’]/following-sibling::tagName
+//tagName[@Attribute=‘value’]/preceding-sibling::tagName
