@@ -1,28 +1,29 @@
-package test;
+package amazontest;
 
 import base.CommonAPI;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import amazonpages.BasePage;
+import amazonpages.SearchJavaBookPage;
 
 public class TestSearchSingleItem extends CommonAPI{
 
 
     @Test
     public void searchUsingClickButton1() {
-        type("#twotabsearchtextbox", "java book");
-        click("#nav-search-submit-button");
-        Boolean searchForIsDisplayed = isPresent(".a-color-state.a-text-bold");
+        BasePage bp = new BasePage(getDriver());
+        SearchJavaBookPage searchJavaBookPage = new SearchJavaBookPage(getDriver());
+        bp.searchElement("java book");
+        Boolean searchForIsDisplayed = searchJavaBookPage.searchForPresence();
         Assert.assertTrue(searchForIsDisplayed);
-
     }
 
     @Test
     public void searchUsingClickButton2() {
-        type("#twotabsearchtextbox", "java book");
-        click("#nav-search-submit-button");
-        String resultFor = getElementText(".a-color-state.a-text-bold");
+        BasePage bp = new BasePage(getDriver());
+        SearchJavaBookPage searchJavaBookPage = new SearchJavaBookPage(getDriver());
+        bp.searchElement("java book");
+        String resultFor = searchJavaBookPage.getSearchForText();
         System.out.println("expected results for \"java book\"");
         System.out.println("actual result for: "+resultFor);
         Assert.assertEquals(resultFor, "\"java book\"");
@@ -31,25 +32,29 @@ public class TestSearchSingleItem extends CommonAPI{
 
     @Test
     public void searchUsingEnter() {
-        typeAndEnter("#twotabsearchtextbox", "selenium book");
+        BasePage bp = new BasePage(getDriver());
+        bp.searchElementAndEnter("selenium book");
     }
 
     @Test
     public void searchForTeether1(){
-        selectFromDropdown("#searchDropdownBox", "Baby");
-        typeAndEnter("#twotabsearchtextbox", "teether");
+        BasePage bp = new BasePage(getDriver());
+        bp.selectFromMenuDropdown("Baby");
+        bp.searchElementAndEnter("teether");
     }
 
     @Test
     public void searchForTeether2(){
-        selectOptionFromDropdownList("#searchDropdownBox", "baby");
-        typeAndEnter("#twotabsearchtextbox", "teether");
+        BasePage bp = new BasePage(getDriver());
+        bp.selectOptionFromMenuDropdownList("baby");
+        bp.searchElementAndEnter("teether");
     }
 
     @Test
     public void searchForTV(){
-        selectFromDropdown("#searchDropdownBox", "Electronics");
-        typeAndEnter("#twotabsearchtextbox", "Samsung curve");
+        BasePage bp = new BasePage(getDriver());
+        bp.selectFromMenuDropdown("Electronics");
+        bp.searchElementAndEnter("Samsung curve");
     }
 
     //@Test

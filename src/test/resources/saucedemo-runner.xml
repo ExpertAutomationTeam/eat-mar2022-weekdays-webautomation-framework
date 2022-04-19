@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="saucedemo test">
+    <parameter name="os" value="OS X"></parameter>
+    <parameter name="browserName" value="chrome"></parameter>
+    <parameter name="url" value="https://www.saucedemo.com/"></parameter>
+    <test name="login feature">
+        <classes>
+            <class name="saucedemotest.TestLogin"></class>
+        </classes>
+    </test>
+</suite>
