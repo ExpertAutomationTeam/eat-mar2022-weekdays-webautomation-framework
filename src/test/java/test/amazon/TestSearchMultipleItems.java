@@ -1,12 +1,11 @@
-package amazontest;
+package test.amazon;
 
 import base.CommonAPI;
 import org.testng.annotations.Test;
-import amazonpages.BasePage;
+import pages.amazon.*;
 import utility.DataReader;
 import utility.Utilities;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class TestSearchMultipleItems extends CommonAPI{

@@ -1,14 +1,13 @@
-package saucedemotest;
+package test.saucedemo;
 
 import base.CommonAPI;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import saucedemopages.HomePage;
-import saucedemopages.LoginPage;
+import pages.saucedemo.HomePage;
+import pages.saucedemo.LoginPage;
 import utility.Utilities;
 
 public class TestLogin extends CommonAPI{
-
     String validUsername = Utilities.loadProperties().getProperty("saucedemo.username");
     String validPassword = Utilities.loadProperties().getProperty("saucedemo.password");
     String lockedUser = Utilities.loadProperties().getProperty("saucedemo.lockeduser");

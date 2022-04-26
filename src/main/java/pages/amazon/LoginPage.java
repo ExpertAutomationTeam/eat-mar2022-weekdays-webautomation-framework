@@ -1,4 +1,4 @@
-package amazonpages;
+package pages.amazon;
 
 import base.CommonAPI;
 import org.openqa.selenium.WebDriver;

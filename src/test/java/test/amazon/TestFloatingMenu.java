@@ -1,11 +1,10 @@
-package amazontest;
+package test.amazon;
 
 import base.CommonAPI;
 import org.testng.Assert;
 
 import org.testng.annotations.Test;
-import amazonpages.BasePage;
-
+import pages.amazon.*;
 
 public class TestFloatingMenu extends CommonAPI{
 

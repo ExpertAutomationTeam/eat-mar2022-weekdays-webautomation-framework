@@ -81,12 +81,12 @@ public class CommonAPI {
             ExtentTestManager.getTest().log(LogStatus.SKIP, "Test Skipped");
         }
         ExtentTestManager.endTest();
-        extent.flush();
         if (takeScreenshot.equalsIgnoreCase("true")){
             if (result.getStatus() == ITestResult.FAILURE) {
                 takeScreenshot(result.getName());
             }
         }
+        extent.flush();
         driver.quit();
     }
 

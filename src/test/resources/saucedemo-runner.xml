@@ -7,7 +7,7 @@
     <parameter name="url" value="https://www.saucedemo.com/"></parameter>
     <test name="login feature">
         <classes>
-            <class name="saucedemotest.TestLogin"></class>
+            <class name="test.saucedemo.TestLogin"></class>
         </classes>
     </test>
 </suite>

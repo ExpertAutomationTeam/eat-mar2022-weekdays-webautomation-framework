@@ -1,4 +1,4 @@
-package amazonpages;
+package pages.amazon;
 
 import base.CommonAPI;
 import org.openqa.selenium.WebDriver;
@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class BasePage extends CommonAPI{
-    //reusable amazontest steps
+    //reusable test.saucedemo.amazon steps
     public BasePage(WebDriver driver){
         PageFactory.initElements(driver, this);
     }

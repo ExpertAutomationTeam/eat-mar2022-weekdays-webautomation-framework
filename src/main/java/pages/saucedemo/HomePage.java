@@ -1,4 +1,4 @@
-package saucedemopages;
+package pages.saucedemo;
 
 import base.CommonAPI;
 import org.openqa.selenium.WebDriver;

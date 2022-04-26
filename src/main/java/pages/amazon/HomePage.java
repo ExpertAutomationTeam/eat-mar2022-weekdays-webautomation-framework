@@ -1,4 +1,4 @@
-package amazonpages;
+package pages.amazon;
 
 public class HomePage {
 }
