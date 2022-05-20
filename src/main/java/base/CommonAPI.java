@@ -14,7 +14,7 @@ import org.testng.annotations.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import reporting.ExtentManager;
 import reporting.ExtentTestManager;
-import utility.Utilities;
+import utility.Utility;
 
 import java.io.File;
 import java.io.IOException;
@@ -28,15 +28,18 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 public class CommonAPI {
 
-    String implicitWait = Utilities.loadProperties().getProperty("implicit.wait", "5");
-    String browserMaximize = Utilities.loadProperties().getProperty("browser.maximize", "false");
-    String takeScreenshot = Utilities.loadProperties().getProperty("take.screenshot", "false");
-    String browserstackUsername = Utilities.loadProperties().getProperty("browserstack.username");
-    String browserstackPassword = Utilities.loadProperties().getProperty("browserstack.password");
+    Properties prop = Utility.loadProperties();
+
+    String implicitWait = prop.getProperty("implicit.wait", "5");
+    String browserMaximize = prop.getProperty("browser.maximize", "false");
+    String takeScreenshot = prop.getProperty("take.screenshot", "false");
+    String browserstackUsername = prop.getProperty("browserstack.username");
+    String browserstackPassword = prop.getProperty("browserstack.password");
     String saucelabsUsername = null;
     String saucelabsPassword = null;
 
@@ -104,16 +107,16 @@ public class CommonAPI {
     public WebDriver getLocalDriver(String browserName, String os){
         if (browserName.equalsIgnoreCase("chrome")){
             if (os.equalsIgnoreCase("OS X")){
-                System.setProperty("webdriver.chrome.driver", Utilities.PATH+"/src/driver/chromedriver");
+                System.setProperty("webdriver.chrome.driver", Utility.root+"/src/driver/chromedriver");
             }else if(os.equalsIgnoreCase("windows")){
-                System.setProperty("webdriver.chrome.driver", Utilities.PATH+"/src/driver/chromedriverexe");
+                System.setProperty("webdriver.chrome.driver", Utility.root+"/src/driver/chromedriverexe");
             }
             driver = new ChromeDriver();
         }else if(browserName.equalsIgnoreCase("firefox")){
             if (os.equalsIgnoreCase("OS X")){
-                System.setProperty("webdriver.gecko.driver", Utilities.PATH+"/src/driver/geckodriver");
+                System.setProperty("webdriver.gecko.driver", Utility.root+"/src/driver/geckodriver");
             }else if (os.equalsIgnoreCase("windows")){
-                System.setProperty("webdriver.gecko.driver", Utilities.PATH+"/src/driver/geckodriver.exe");
+                System.setProperty("webdriver.gecko.driver", Utility.root+"/src/driver/geckodriver.exe");
             }
             driver = new FirefoxDriver();
         }
@@ -143,9 +146,9 @@ public class CommonAPI {
                            @Optional("http://www.google.com")String url) throws MalformedURLException {
         if (useCloudEnv){
             if (envName.equalsIgnoreCase("browserstack")){
-                getCloudDriver(envName, Utilities.decode(browserstackUsername), Utilities.decode(browserstackPassword), os, os_version, browserName, browserVersion);
+                getCloudDriver(envName, Utility.decode(browserstackUsername), Utility.decode(browserstackPassword), os, os_version, browserName, browserVersion);
             } else if (envName.equalsIgnoreCase("saucelabs")){
-                getCloudDriver(envName, Utilities.decode(saucelabsUsername), Utilities.decode(saucelabsPassword), os, os_version, browserName, browserVersion);
+                getCloudDriver(envName, Utility.decode(saucelabsUsername), Utility.decode(saucelabsPassword), os, os_version, browserName, browserVersion);
             }
         }else {
             getLocalDriver(browserName, os);

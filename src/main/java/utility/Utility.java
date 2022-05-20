@@ -7,15 +7,15 @@ import java.util.Base64;
 import java.util.Properties;
 
 
-public class Utilities {
+public class Utility {
 
-    public static final String PATH = System.getProperty("user.dir");
+    public static final String root = System.getProperty("user.dir");
 
     public static Properties loadProperties(){
         Properties prop = new Properties();
 
         try {
-            InputStream inputStream = new FileInputStream(PATH+"/src/config.properties");
+            InputStream inputStream = new FileInputStream(root+"/src/config.properties");
             prop.load(inputStream);
         } catch (IOException e) {
             e.printStackTrace();

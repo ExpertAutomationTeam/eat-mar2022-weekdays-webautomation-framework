@@ -2,9 +2,13 @@ package test.amazon;
 
 import base.CommonAPI;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pages.amazon.*;
-import pages.amazon.*;
+import utility.DataReader;
+import utility.Utility;
+
+import java.io.IOException;
 
 public class TestSearchSingleItem extends CommonAPI{
 
@@ -57,17 +61,17 @@ public class TestSearchSingleItem extends CommonAPI{
         bp.searchElementAndEnter("Samsung curve");
     }
 
-    //@Test
-//    public void searchUsingEnterYouTube() throws InterruptedException {
-//        Actions action = new Actions(driver);
-//        action.moveToElement(driver.findElement(By.cssSelector("div[id='search-input']"))).sendKeys("selenium course").build().perform();
-//        Thread.sleep(3000);
-//        driver.findElement(By.cssSelector("#search-icon-legacy")).click();
-//        Thread.sleep(3000);
-//        //locators
-//
-//        //Assert.assertEquals("", "");
-//
-//    }
+    @DataProvider
+    public Object[][] readVariant() throws IOException {
+        DataReader dr = new DataReader(Utility.root+"/data/my_data.xlsx");
+        return dr.readVariant("Sheet1");
+    }
+
+    @Test(dataProvider = "readVariant")
+    public void searchMultipleItemsWithDataProvider(String id, String item) {
+        System.out.println(id);
+        BasePage bp = new BasePage(getDriver());
+        bp.searchElementAndEnterAndClearField(item);
+    }
 
 }

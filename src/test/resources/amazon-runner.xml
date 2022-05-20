@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
-<suite name="Amazon test.saucedemo.amazontest">
+<suite name="Amazon automation">
     <parameter name="useCloudEnv" value="false"></parameter>
     <parameter name="envName" value="browserstack"></parameter>
     <parameter name="os" value="OS X"></parameter>
@@ -9,10 +9,10 @@
     <parameter name="browserName" value="chrome"></parameter>
     <parameter name="browserVersion" value="91"></parameter>
     <parameter name="url" value="https://www.amazon.com"></parameter>
-    <test name="my first test.saucedemo.amazontest">
+    <test name="search amazon test">
         <classes>
-            <class name="test.amazon.TestSearchSingleItem"></class>
-            <class name="test.amazon.TestFloatingMenu"></class>
+            <!--<class name="test.amazon.TestSearchSingleItem"></class>-->
+            <!--<class name="test.amazon.TestFloatingMenu"></class>-->
             <class name="test.amazon.TestSearchMultipleItems"></class>
         </classes>
     </test>
